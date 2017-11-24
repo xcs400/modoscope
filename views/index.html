@@ -1,0 +1,428 @@
+{%extends 'templates/layout.html' %}
+{% block content %}
+<div class="container">
+<!--  <div class="row">
+    <div class="col-md-6 tcenter"><h1><span class="label label-default" >Node-Oscope</span></h1></div>
+  </div>
+  -->
+  <div id="runstate"><h4><span class='blink_text'>Not connected to 192.168.0.31 ..</span></h4></div>
+  
+  <div class="row">
+
+    <div class="col-md-4">
+      <div>
+	  
+	     <div >
+        <div class="btn-group btn-group-md btn-group-justified" data-toggle="buttons">
+          <label class="btn btn-primary active" title="display incoming data">
+            <input type="radio" name="btn-run" id="btn-run"  checked>Run
+          </label>
+          <label class="btn btn-primary" title="stop updates of display">
+            <input type="radio" name="btn-stop" id="btn-stop" >Stop
+          </label>
+	    
+		  
+        </div>
+      </div>
+	  
+	  <br>
+	  
+	          <div class="outline">
+        <!-- VERTICAL CONTROLS -->
+          <h4><span class="label label-default" title="options controlling the vertical axis">Vertical Channel 1</span></h4>
+          <!-- Bits Per Sample -->
+    <!--          <div class="label label-default" title="enter the number of bits in a sample as determined by your data source">Bits/Sample</div>
+          <div class="btn-group btn-group-md" data-toggle="buttons">
+            <span>
+            <label class="btn btn-primary btn-margin">
+              <input type="radio" name="bits8" id="bits8">8
+            </label>
+            <label class="btn btn-primary btn-margin ">
+              <input type="radio" name="bits12" id="bits12">12
+            </label>
+            <label class="btn btn-primary  btn-margin active">
+              <input type="radio" name="bits16" id="bits16" checked>16
+            </label>
+              </span>
+          </div>
+          <div class="w100"></div>  -->
+          <!-- Sample Rate -->
+   <!--         <div class="label label-default" title="enter total range of the source voltage from - to +">Voltage Range</div>
+          <div>
+            <input id='vrange' type="number" class="form-control" value="6.6" min="1" step="1"/>
+          </div>
+
+          <div class="w100"></div>  -->
+
+<br>
+          <!-- Volts Per Division -->
+          <div class="label label-default " title="select how many volts one vertical division represents">Volts/Div</div>
+
+          <div class="btn-group btn-group-md" data-toggle="buttons">
+            <div>
+               <label class="btn btn-primary btn-margin">
+                <input class="vdiv0" type="radio" name="vdiv" id="volts025" checked>.1
+              </label>
+			  <label class="btn btn-primary btn-margin">
+                <input class="vdiv0" type="radio" name="vdiv" id="volts025" checked>.25
+              </label>
+              <label class="btn btn-primary btn-margin active">
+                <input class="vdiv0" type="radio" name="vdiv" id="volts05" >.5
+              </label>
+              <label class="btn btn-primary btn-margin ">
+                <input class="vdiv0" type="radio" name="vdiv" id="volts1">1
+              </label>
+            </div>
+          </div>
+		  
+		  <div class="label label-default" title="position of 0 baseline for channel 1">vertical position Channel1</div>
+        <input id='channel1v' class="form-control" type="number" min="-10" max="10" step="0.5" value="0"/>
+		  
+        </div>
+		
+	  
+<br>
+	
+        <div class="outline">
+        <!-- VERTICAL CONTROLS -->
+          <h4><span class="label label-default" title="options controlling the vertical axis">Vertical Channel 2</span></h4>
+   
+
+          <!-- Volts Per Division -->
+          <div class="label label-default " title="select how many volts one vertical division represents">Volts/Div</div>
+
+          <div class="btn-group btn-group-md" data-toggle="buttons">
+            <div>
+               <label class="btn btn-primary btn-margin">
+                <input class="vdiv1" type="radio" name="vdiv1" id="volts025" checked>.1
+              </label>
+			  <label class="btn btn-primary btn-margin">
+                <input class="vdiv1" type="radio" name="vdiv1" id="volts025" checked>.25
+              </label>
+              <label class="btn btn-primary btn-margin active">
+                <input class="vdiv1" type="radio" name="vdiv1" id="volts05" >.5
+              </label>
+              <label class="btn btn-primary btn-margin ">
+                <input class="vdiv1" type="radio" name="vdiv1" id="volts1">1
+              </label>
+            </div>
+          </div>
+		     <div class="label label-default" title="position of 0 baseline for channel 2">vertical position Channel2</div>
+        <input id='channel2v' class="form-control" type="number" min="-10" max="10" step="0.5" value="0"/>
+		
+		    <div >
+        <div class="btn-group btn-group-md btn-group-justified" data-toggle="buttons">
+ 		    
+		  <label class="btn btn-primary" title="display incoming data">
+            <input type="radio" name="btn-cor" id="btn-cor"  checked>Corr
+          </label>
+          <label class="btn btn-primary active" title="stop updates of display">
+            <input type="radio" name="btn-uncor" id="btn-uncor" >NoCor
+          </label>
+		    
+		  
+        </div>
+      </div>
+	  
+	  
+        </div>
+<br>
+        <div class="outline">
+        <!-- VERTICAL CONTROLS -->
+          <h4><span class="label label-default" title="options controlling the vertical axis">Vertical Channel 3</span></h4>
+   
+
+          <!-- Volts Per Division -->
+          <div class="label label-default " title="select how many volts one vertical division represents">Volts/Div</div>
+
+          <div class="btn-group btn-group-md" data-toggle="buttons">
+            <div>
+               <label class="btn btn-primary btn-margin">
+                <input class="vdiv2" type="radio" name="vdiv2" id="volts025" checked>.1
+              </label>
+			  <label class="btn btn-primary btn-margin">
+                <input class="vdiv2" type="radio" name="vdiv2" id="volts025" checked>.25
+              </label>
+              <label class="btn btn-primary btn-margin active">
+                <input class="vdiv2" type="radio" name="vdiv2" id="volts05" >.5
+              </label>
+              <label class="btn btn-primary btn-margin ">
+                <input class="vdiv2" type="radio" name="vdiv2" id="volts1">1
+              </label>
+            </div>
+          </div>
+		     <div class="label label-default" title="position of 0 baseline for channel 3">vertical position Channel3</div>
+        <input id='channel3v' class="form-control" type="number" min="-10" max="10" step="0.5" value="0"/>      
+        </div>		
+		
+      </div>
+ 
+      <div class="control-margin">
+        <!-- HORIZONTAL CONTROLS -->
+        <div class="outline">
+
+          <h4><span class="label label-default" title="options controlling the horizontal axis">Horizontal</span></h4>
+          <!-- Sample Rate -->
+   <!--         <div class="label label-default" title="enter the number of samples in one data message as determined by your data source">Samples Per Second</div>
+          <div>
+            <input id='samplerate' type="number" class="form-control" value="250000 min="1"/>
+          </div>
+          <div class="w100"></div>  -->
+          <!-- Seconds Per Division -->
+          <div class="label label-default w100" title="select fractions of second that one horizontal division represents">Seconds/Div</div>
+          <div class="btn-group btr-group-md" data-toggle="buttons">
+            <div>
+              <label class="btn btn-primary btn-margin">
+                <input class="sdiv" type="radio" name="sdiv" id="s001" >.001
+              </label>
+              <label class="btn btn-primary btn-margin">
+                <input  class="sdiv" type="radio" name="sdiv" id="s002" >.002
+              </label>
+              <label class="btn btn-primary btn-margin">
+                <input  class="sdiv" type="radio" name="sdiv" id="s003" >.003
+              </label>
+            </div>
+            <div>
+              <label class="btn btn-primary btn-margin">
+                <input  class="sdiv" type="radio" name="sdiv" id="s004" >.004
+              </label>
+              <label class="btn btn-primary btn-margin active" >
+                <input  class="sdiv" type="radio" name="sdiv" id="s005" checked>.005
+              </label>
+              <label class="btn btn-primary btn-margin">
+                <input  class="sdiv" type="radio" name="sdiv" id="s006" >.006
+              </label>
+            </div>
+            <div>
+              <label class="btn btn-primary btn-margin">
+                <input  class="sdiv" type="radio" name="sdiv" id="s007">.007
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+	
+    <div class="col-md-12">
+  
+      <div class="control-margin">
+      
+  <!--       <h4><span class="label label-default">Channel 2</span></h4>-->
+     
+     
+		</div>
+      <!-- cursor select -->
+	    <div class="outline">
+		
+      <span class="label label-default " title="select a cursor to place on the display">Cursor Select</span>
+      <div class="btn-group btn-group-md " data-toggle="buttons">
+        <div>
+        <label class="btn btn-primary btn-margin active " title="vertical cursor 1">
+          <input type="radio" name="cursor" id="vcursor1" checked>V1
+        </label>
+        <label class="btn btn-primary  btn-margin " title="vertical cursor 2">
+          <input type="radio" name="cursor" id="vcursor2">V2
+        </label>
+        <label class="btn btn-primary  btn-margin " title="horizontal cursor 1">
+          <input type="radio" name="cursor" id="hcursor1">H1
+        </label>
+        <label class="btn btn-primary  btn-margin " title="horizontal cursor 2">
+          <input type="radio" name="cursor" id="hcursor2"  >H2
+        </label>
+      </div>
+      </div>
+    </div>
+<br>
+	
+	 <div class="col-md-12">
+  
+	  <label class="btn btn-primary  btn-margin " title="copy">
+          <input type="button" name="cursor" id="btn-copydata">Get full Oscope Data
+        </label>
+	
+		 </div>
+		 
+		 
+    </div>	
+	
+	
+	  </div>
+	
+	
+	 <div id="oscope-parent" class="col-md-1">
+    <canvas id="oscope" class="oscope-canvas" width="600" height="450"></canvas>
+    </div>
+	
+  </div>
+  
+    
+    <div class="row">
+
+	
+		 
+	   <div class="col-md-12">
+			     <div id="data0" class="label label-default" title="value">Oscope Data</div>
+  
+		  </div>
+	  </div> 
+	  
+		  
+		  
+</div>
+
+<!-- ================ -->
+<!-- control handlers -->
+<!-- ================ -->
+<script>
+  // =============================================
+  // sample size
+  // =============================================
+  $('#bits8' ).on('change',null,function() {oscope.onSampleBits(8);});
+  $('#bits12').on('change',null,function() {oscope.onSampleBits(12);});
+  $('#bits16').on('change',null,function() {oscope.onSampleBits(16);});
+
+  // =============================================
+  // volts per division
+  // =============================================
+  /*
+  $('#volts025' ).on('change',null,function() {oscope.onVoltsPerDiv(0.25);});
+  $('#volts05').on('change',null,function() {oscope.onVoltsPerDiv(0.5);});
+  $('#volts1' ).on('change',null,function() {oscope.onVoltsPerDiv(1);});
+  $('#volts2').on('change',null,function() {oscope.onVoltsPerDiv(2);});
+  */
+  $('.vdiv0' ).on('change',null,function(event) {
+        oscope.onVoltsPerDiv(0,parseFloat(event.target.parentElement.innerText));
+      }  );
+	  
+	  $('.vdiv1' ).on('change',null,function(event) {
+        oscope.onVoltsPerDiv(1,parseFloat(event.target.parentElement.innerText));
+      }  );
+	  
+	  
+	  $('.vdiv2' ).on('change',null,function(event) {
+        oscope.onVoltsPerDiv(2,parseFloat(event.target.parentElement.innerText));
+      }  );
+	  
+	  
+	  
+
+
+  // =============================================
+  // voltage range
+  // =============================================
+  $('#vrange' ).on('change',null,
+      function() {
+        var vrange = parseInt($('#vrange')[0].value);
+        oscope.onVoltageRange(vrange)
+      }
+  );
+
+  // =============================================
+  // sample rate
+  // =============================================
+  $('#samplerate' ).on('change',null,
+      function() {
+        var rate = parseInt($('#samplerate')[0].value);
+        oscope.onSamplesPerSecond(rate);
+      }
+  );
+
+  // =============================================
+  // seconds per division
+  // =============================================
+  $('.sdiv' ).on('change',null,function(event) {
+      oscope.onSecondsPerDiv(parseFloat(event.target.parentElement.innerText));
+      }
+  );
+
+  // =============================================
+  // canvas mouse event for cursor drag
+  // =============================================
+  var mouse_state = 0;
+  $('#oscope').on('mousedown',function(event) {
+    mouse_state = 1;
+    oscope.onCursorMove(event.offsetX,event.offsetY);
+  });
+
+  $('#oscope').on('mouseup',function() {
+    mouse_state = 0;
+  });
+
+  $('#oscope').on('mouseout',function() {
+    mouse_state = 0;
+  });
+
+  $('#oscope').on('mousemove',function(event) {
+    switch(mouse_state) {
+    case 0:
+      // do nothing
+      break;
+    case 1:
+      oscope.onCursorMove(event.offsetX,event.offsetY);
+      break;
+    }
+  });
+  // =============================================
+  // cursor select
+  // =============================================
+  $('#hcursor1' ).on('change',null,function() {oscope.onCursorSelect(0);});
+  $('#hcursor2' ).on('change',null,function() {oscope.onCursorSelect(1);});
+  $('#vcursor1' ).on('change',null,function() {oscope.onCursorSelect(2);});
+  $('#vcursor2' ).on('change',null,function() {oscope.onCursorSelect(3);});
+
+  // =============================================
+  // run/stop
+  // =============================================
+  $('#btn-run' ).on('change',null,function() {oscope.onRunStop(true );});
+  $('#btn-stop').on('change',null,function() {oscope.onRunStop(false);});
+  
+  
+  $('#btn-cor' ).on('change',null,function() {oscope.onCorrel(true );});
+  $('#btn-uncor').on('change',null,function() {oscope.onCorrel(false);});
+  
+
+  $('#btn-copydata').on('click',null,function() {oscope.copydata();});
+  
+
+
+  // =============================================
+  // x axis offset handling
+  // =============================================
+  function setChannelOffset(channel,element) {
+    var offset = element.value;
+ // var offset = parseInt(element.value);
+    if (offset < -10) {
+      element.value = "-10";
+      offset = -10;
+    }
+    if (offset > 10) {
+      element.value = "10";
+      offset = 10;
+    }
+    oscope.onVerticalOffset(channel,offset);
+  }
+
+  $('#channel1v').on('change',null,
+      function() {
+        var element = $('#channel1v')[0];
+        setChannelOffset(1,element);
+      }
+  );
+  $('#channel2v').on('change',null,
+      function() {
+        var element = $('#channel2v')[0];
+        setChannelOffset(2,element);
+      }
+   );
+	 
+  $('#channel3v').on('change',null,
+      function() {
+        var element = $('#channel3v')[0];
+        setChannelOffset(3,element);
+      }
+  );
+
+</script>
+
+{% endblock %}
