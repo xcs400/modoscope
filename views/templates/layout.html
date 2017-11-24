@@ -22,11 +22,39 @@
   <script src="components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/oscope.js"></script>
+  
+     <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="1049405251139-jt0n44gqg1mfuproqopl0n7lih6enkh9.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+ 
+ 
 </head>
 <body>
 <!-- <a href="https://github.com/dmh2000/node-oscope"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
 -->
-{% block content %}{% endblock %}
+<html lang="en">
+  
+ 
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+    </script>
+
+
+<!--  {% block content %}{% endblock %}   -->
 <div>
 <!--   <div><a href="http://www.geezer-x.com">concocted by geezer-x</a></div>
   <div>powered by <a href="http://www.nodejs.org"><img src="img/nodejs.png" width="80" alt="node.js"/></a></div>
