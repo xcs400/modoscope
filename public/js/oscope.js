@@ -986,7 +986,7 @@ m_fullsignal[2]=0;
 	else
 		var v=0;
 	
-var url="http://192.168.0.31/?.*CONF_VS_ParametresConfiguration.vs_confGlanum.StartStopScope=" + v + "&-*Execute.(*Appliquescope)(void)";
+var url="users?.*CONF_VS_ParametresConfiguration.vs_confGlanum.StartStopScope=" + v + "&-*Execute.(*Appliquescope)(void)";
 	  
   var request = makeHttpObject();
   request.open("GET", url, true);
@@ -1172,9 +1172,9 @@ i=n;
 function copydata()
 {
 	  // requette pour recupere les 3 traces
-   simpleHttpRequest("http://192.168.0.31/?-*Execute.(*Readfullscope)(void)", traitefullscope);
-   simpleHttpRequest("http://192.168.0.31/?-*Execute.(*Readfullscope)(void)", traitefullscope);
-   simpleHttpRequest("http://192.168.0.31/?-*Execute.(*Readfullscope)(void)", traitefullscope);
+   simpleHttpRequest("users?-*Execute.(*Readfullscope)(void)", traitefullscope);
+   simpleHttpRequest("users?-*Execute.(*Readfullscope)(void)", traitefullscope);
+   simpleHttpRequest("users?-*Execute.(*Readfullscope)(void)", traitefullscope);
 
  
  }
@@ -1308,7 +1308,8 @@ function simpleHttpRequest(url, success, failure) {
 
   function readEtatscope()
  {
-  simpleHttpRequest("http://192.168.0.31/?-*Execute.(*Getscope)(void)", traiteetatscope, discon);
+ //simpleHttpRequest("users?Getscope=1", traiteetatscope, discon);
+ simpleHttpRequest("users?-*Execute.(*Getscope)(void)", traiteetatscope, discon);
 
   setTimeout('oscope.readEtatscope()',1000)
   
@@ -1353,9 +1354,9 @@ if (   responseText != '' )
 
   function go()
  {
-  simpleHttpRequest("http://192.168.0.31/?-*Execute.(*OscilloPlug)(void)", traite, retrylater);
+//  simpleHttpRequest("users?-*Execute.(*OscilloPlug)(void)=1", traite, retrylater);
    
- //simpleHttpRequest("../?-*Execute.(*OscilloPlug)(void)", traite);
+ simpleHttpRequest("data?getdata=1", traite);
  }
 
   function retrylater()
