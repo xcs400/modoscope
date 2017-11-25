@@ -1,7 +1,7 @@
 "use strict";
 var express      = require('express');
 var path         = require('path');
-var favicon      = require('serve-favicon');
+//var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
@@ -12,7 +12,7 @@ var users     = require('./routes/users');
 var socket    = require('./lib/socket');
 var receiver  = require('./lib/receiver');
 var debug     = require('debug')('ploty:server');
-var port      = process.env.PORT || '3000';
+var port      = process.env.PORT || '8080';
 
 
 // create express application
