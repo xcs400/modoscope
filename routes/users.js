@@ -8,9 +8,10 @@ router.get('/', function(req, res, next) {
 	   //     var url_parts = url.parse(req.url,true);
   //  console.log(req.param('Getscope'));
   if (req.param('-*Execute.(*Getscope)(void)')=='')
-  {console.log("getpara");
-     var rep="5555";
-   res.send(rep);
+  {console.log("getpara 1");
+     var rep=[]
+	 rep["StartStopScope"]=1
+   res.json( {"StartStopScope":1} );
 
   }
  

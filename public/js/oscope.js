@@ -1290,12 +1290,12 @@ function makeHttpObject() {
 function simpleHttpRequest(url, success, failure) {
   var request = makeHttpObject();
   request.open("GET", url, true);
-  request.timeout = 5000;
+  request.timeout = 15000;
   
   request.send(null);
   request.onreadystatechange = function() {
     if (request.readyState == 4) {
-      if (request.status == 200)
+      if (request.status == 200 || request.status == 202)
         success(request.responseText);
       else if (failure)
         failure(request.status, request.statusText);
@@ -1309,7 +1309,7 @@ function simpleHttpRequest(url, success, failure) {
   function readEtatscope()
  {
  //simpleHttpRequest("users?Getscope=1", traiteetatscope, discon);
- simpleHttpRequest("users?-*Execute.(*Getscope)(void)", traiteetatscope, discon);
+ //simpleHttpRequest("users?-*Execute.(*Getscope)(void)", traiteetatscope, discon);
 
   setTimeout('oscope.readEtatscope()',1000)
   
@@ -1356,7 +1356,7 @@ if (   responseText != '' )
  {
 //  simpleHttpRequest("users?-*Execute.(*OscilloPlug)(void)=1", traite, retrylater);
    
- simpleHttpRequest("data?getdata=1", traite);
+ simpleHttpRequest("data/getdata", traite);
  }
 
   function retrylater()
