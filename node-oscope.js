@@ -14,7 +14,7 @@ var socket    = require('./lib/socket');
 var receiver  = require('./lib/receiver');
 var debug     = require('debug')('ploty:server');
 var port      = process.env.PORT || '8080';
-var DelayedResponse = require('http-delayed-response');
+//var DelayedResponse = require('http-delayed-response');
 
 // create express application
 var app = express();
@@ -26,14 +26,6 @@ var server = require('http').Server(app);
 // connect socket.io to server
 var io = require('socket.io')(server);
 
-function slowFunction (callback) {
-  // let's do something that could take a while...
-   console.log("gtgggjhjhj jh jh jh");
-    var rep="4|4|10|25|256|5700107|4294967105|4294966535|678|0|M0,3051 !1234ghj23rt56rt78io45";
-
-	callback(0,rep)
-}
-
 
 
 // view engine setup
@@ -43,44 +35,20 @@ app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(logger('dev'));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/data', data);
 app.use('/users', users);
 
-app.use(function (req, res) {
-	 console.log("gttttttttttetdata");
-	    var rep="4|4|10|25|256|5700107|4294967105|4294966535|678|0|M0,3051 !1234ghj23rt56rt78io45";
-
-//	  res.send(rep);
-//	  return;
-	  
-  var delayed = new DelayedResponse(req, res);
-
-  delayed.on('done', function (results) {
-    // slowFunction responded within 5 seconds
-     res.write(results);
-	res.end();
-  }).on('cancel', function () {
-    // slowFunction failed to invoke its callback within 5 seconds
-    // response has been set to HTTP 202
-    res.write('sorry, this will take longer than expected...');
-    res.end();
-  });
 
 
-  slowFunction(delayed.wait(5000));
-//   res.write('start.');
- //   res.end();  
-});
-  
-//app.use('/', routes);
-//app.use('/users', users);
-//app.use('/data', data);
+
+
 
 // catch 404 and forward to error handler
 /*
