@@ -9,7 +9,6 @@ var DelayedResponse = require('http-delayed-response');
 
 
 
-var sid= Math.random();
 
 var reqn=0
 var val="no new data";
@@ -39,7 +38,9 @@ function longwait (delayed,callback,a,b) {
   if (breaktime ==2 )
 	  {
 	  console.log("call callback data " + a+ " req:"+delayed["instance"]);
-	  callback(0, '{ "ack":1 , "sid":'+sid+', "req" : ' + delayed["instance"] + ', "data" :"' + val + '"}'  );
+	  var val1=val;
+
+	  callback(0,val1);
 	  }
 	  
 }
@@ -91,7 +92,7 @@ router.get('/getdata', function(req, res, next) {
 		console.log("timeout");
 		delayed["break"]=1;
 	
-	  res.write('{ "ack":1 , "sid":'+ sid + ', "req" : ' + delayed["instance"] + ', "data":"no new data"}' );
+		res.write('no new data');
 	
 		res.end();
 			
@@ -124,8 +125,7 @@ router.get('/setrealdata', function(req, res, next) {
 	val= req.param("var")
  console.log(val);
 	breaktime=2;
-//	res.write('ok current req waiting :' + reqn);
-	res.write( '{ "ack":1 , "sid":'+sid+  ' "rnd":' +Math.random() +' , "req" : ' + reqn +  ', "data": ' + val + '"}'  );
+	res.write('ok');
 		res.end();
 
 });
